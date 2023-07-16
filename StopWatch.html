@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramu's StopWatch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <style>
+        #buttons{
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+        }
+        .button{
+            width: 300px;
+            border: 2px solid black;
+            border-radius: 16px;
+            cursor: pointer;
+            font-size: 2.5rem;
+            padding: 1rem 0px;
+            font-family: 'Bree Serif', serif;
+            margin-top: 1rem;
+        }
+        #button1{
+            background-color: yellowgreen;
+            color: white;
+        }
+        #button2{
+            background-color: red;
+            color: white;
+        }
+        #button3{
+            background-color: blueviolet;
+            color: white;
+        }
+        .all{
+            text-align: center;
+        }
+        #heading{
+            font-size: 2rem;
+            font-family: 'Bree Serif', serif;
+        }
+        #time{
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+            font-size: 8rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="all" id="heading">
+        <h1 id="head"> Stop-Watch Using JavaScript</h1>
+        <h3 id="slogan">made with love by ramu</h3>
+    </div>
+    <div class="all" id="timer">
+        <p id="time">0:00</p>
+    </div>
+    <div class="all" id="buttons">
+        <div class="button" id="button1">Start / Resume</div>
+        <div class="button" id="button2">Stop</div>
+        <div class="button" id="button3">Reset</div>
+    </div>
+    <script>
+       
+    let i=0;
+    let j=0;
+    const start = document.getElementById("button1");
+    const stop = document.getElementById("button2");
+    const reset = document.getElementById("button3");
+    const time = document.getElementById("time");
+    start.addEventListener("click", ()=>{
+        j=setInterval(()=>{
+            i+=1;
+            if(i%60>=0 && i%60<10){
+            time.innerHTML= `${Math.floor(i/60)}:0${i%60}`;
+            }
+            else{
+            time.innerHTML= `${Math.floor(i/60)}:${i%60}`;
+            }
+        },1000)
+        }
+    );
+    stop.addEventListener("click", ()=>{
+        clearInterval(j);
+    });
+    reset.addEventListener("click", ()=>{
+        clearInterval(j);
+        time.innerHTML= "0:00";
+        i=0;
+    });
+
+</script>
+</body>
+
+</html>
